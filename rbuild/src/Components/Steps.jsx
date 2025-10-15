@@ -10,10 +10,12 @@ import { Chip, Stack } from '@mui/material';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { addResumeAPI } from '../services/allAPI';  // Adjust path as needed
+import Swal from 'sweetalert2';
 
 const steps = ['Basic Information', 'Contact Details', 'Education details', 'Work Experience', 'Skills', 'Reviw & Submit'];
 
-function Steps({ resumeData, setresumeData }) {
+function Steps({ resumeData, setresumeData,setfinish }) {
 
   console.log(resumeData)
 
@@ -28,6 +30,10 @@ function Steps({ resumeData, setresumeData }) {
   // Destructue resumedata
 
   const { personalDetails, contactDetails, educationDetails, workExperience, skills, summary } = resumeData
+
+  // State variable
+  
+
 
   // to hold data from the input box
   const [userSkills, setuserSkills] = useState("")
@@ -47,6 +53,7 @@ function Steps({ resumeData, setresumeData }) {
       setresumeData(data => ({ ...data, skills: [...data.skills, skill] }))
     }
   }
+
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
@@ -205,9 +212,18 @@ function Steps({ resumeData, setresumeData }) {
           >
             <TextField onChange={e => setuserSkills(e.target.value)} id="outlined-basic" label="Add Skills" variant="outlined" />
 
-            <Stack spacing={2} direction="row">
-              <Button onClick={() => addSkill(userSkills)} variant="contained">ADD</Button>
-            </Stack>
+           <Stack spacing={2} direction="row">
+  <Button onClick={() => addSkill(userSkills)} variant="contained">ADD</Button>
+  <Button 
+    onClick={() => {
+      setuserSkills("");  // Clear the input field
+      setresumeData(data => ({ ...data, skills: [] }));  // Clear all added skills
+    }} 
+    variant="outlined"
+  >
+    CLEAR
+  </Button>
+</Stack>
 
           </Box>
 
@@ -269,8 +285,36 @@ function Steps({ resumeData, setresumeData }) {
   }
 
   const handleAddResume = async() =>{
-    alert("Added")
+
+    try{
+     
+      const response = await addResumeAPI(resumeData)
+      console.log(response)
+      alert("Resume Added Successfully")
+      
+
+    }
+   
+    
+  catch (error) {
+    console.error("Error adding resume:", error);
+
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'Something went wrong while adding your resume!',
+    footer: '<a href="#">Need help? Contact support</a>',
+    background: '#fefefe',
+    confirmButtonColor: '#d33',
+    confirmButtonText: 'Try Again',
   }
+  
+);
+
+  }
+  setfinish(true);
+}
+
 
   return (
     <div>

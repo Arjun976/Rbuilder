@@ -1,20 +1,18 @@
 import axios from "axios";
 
-const commonAPI = async(httpMethod,url,reqBody) => {
-    const reqConfig ={
-        method: httpMethod,
-        url,
-        data: reqBody
-    }
+const commonAPI = async (httpMethod, url, reqBody) => {
+  try {
+    const reqConfig = {
+      method: httpMethod,
+      url,
+      data: reqBody,
+    };
+    const response = await axios(reqConfig);
+    return response;
+  } catch (error) {
+    console.error("❌ API Error:", error);
+    throw error; // 👈 Throw instead of returning
+  }
+};
 
-    // API cla  using axios
-
-    return await axios(reqConfig).then(res =>{
-        return res
-    })
-    .catch (err =>{
-        return err
-    })
-}
-
-export default commonAPI
+export default commonAPI;

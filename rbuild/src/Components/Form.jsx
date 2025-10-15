@@ -4,14 +4,16 @@ import Steps from './Steps'
 import Preview from './Preview'
 
 function Form() {
+  const [finished, setfinished] = useState(false)
+  const[resumeId,setresumeId] = useState("")
 
-  const [resumeData, setresumeData] = useState ({
+
+  const [resumeData, setresumeData] = useState({
     personalDetails: {
       fullName: "",
       jobTitle: "",
       location: "",
     },
-
     contactDetails: {
       email: "",
       phoneNumber: "",
@@ -19,14 +21,12 @@ function Form() {
       linkedIn: "",
       portfolio: ""
     },
-
     educationDetails: {
       course: "",
       college: "",
       university: "",
       passout: "",
     },
-
     workExperience: {
       jobTitle: "",
       company: "",
@@ -36,29 +36,44 @@ function Form() {
     skills: [],
     summary: ""
   })
+
   return (
     <div>
-
-      <Stack
-        direction="row"
-        spacing={2}
-        sx={{
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+      {finished ? (
         <Box>
-          <Steps  resumeData = {resumeData}
-          setresumeData = {setresumeData}/>
+          <Preview
+            resumeData={resumeData}
+            setresumeData={setresumeData}
+            resumeId={resumeId}
+            setresumeId={setresumeId}
+          />
         </Box>
+      ) : (
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Box>
+            {/* ✅ Pass setfinished to Steps */}
+            <Steps
+              resumeData={resumeData}
+              setresumeData={setresumeData}
+              setfinish={setfinished}
+            />
+          </Box>
 
-        <Box>
-          <Preview  resumeData = {resumeData}
-          setresumeData = {setresumeData}/>
-        </Box>
-
-      </Stack >
-
+          <Box>
+            <Preview
+              resumeData={resumeData}
+              setresumeData={setresumeData}
+            />
+          </Box>
+        </Stack>
+      )}
     </div>
   )
 }
