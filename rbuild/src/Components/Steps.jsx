@@ -115,11 +115,11 @@ function Steps({ resumeData, setresumeData,setfinish }) {
             flexDirection={'column'}
             alignItems={'center'}
           >
-            <TextField onChange={e => setresumeData({ ...resumeData, personalDetails: { ...resumeData.personalDetails, fullName: e.target.value } })} id="outlined-basic" label="Full Name" variant="outlined" />
+            <TextField value={resumeData.personalDetails.fullName||""} onChange={e => setresumeData({ ...resumeData, personalDetails: { ...resumeData.personalDetails, fullName: e.target.value } })} id="outlined-basic" label="Full Name" variant="outlined" />
             <br />
-            <TextField onChange={e => setresumeData({ ...resumeData, personalDetails: { ...resumeData.personalDetails, jobTitle: e.target.value } })} id="outlined-basic" label="Job Title" variant="outlined" />
+            <TextField value={resumeData.personalDetails.jobTitle||""} onChange={e => setresumeData({ ...resumeData, personalDetails: { ...resumeData.personalDetails, jobTitle: e.target.value } })} id="outlined-basic" label="Job Title" variant="outlined" />
             <br />
-            <TextField onChange={e => setresumeData({ ...resumeData, personalDetails: { ...resumeData.personalDetails, location: e.target.value } })} id="outlined-basic" label="Location" variant="outlined" />
+            <TextField value={resumeData.personalDetails.location||""} onChange={e => setresumeData({ ...resumeData, personalDetails: { ...resumeData.personalDetails, location: e.target.value } })} id="outlined-basic" label="Location" variant="outlined" />
 
           </Box>
 
@@ -137,15 +137,15 @@ function Steps({ resumeData, setresumeData,setfinish }) {
             flexDirection={'column'}
             alignItems={'center'}
           >
-            <TextField onChange={e => setresumeData({ ...resumeData, contactDetails: { ...resumeData.contactDetails, email: e.target.value } })} id="outlined-basic" label="Email" variant="outlined" />
+            <TextField value={resumeData.contactDetails.email || ""}  onChange={e => setresumeData({ ...resumeData, contactDetails: { ...resumeData.contactDetails, email: e.target.value } })} id="outlined-basic" label="Email" variant="outlined" />
 
-            <TextField onChange={e => setresumeData({ ...resumeData, contactDetails: { ...resumeData.contactDetails, phoneNumber: e.target.value } })} id="outlined-basic" label="Phone Number" variant="outlined" />
+            <TextField value={resumeData.contactDetails.phoneNumber || ""} onChange={e => setresumeData({ ...resumeData, contactDetails: { ...resumeData.contactDetails, phoneNumber: e.target.value } })} id="outlined-basic" label="Phone Number" variant="outlined" />
 
-            <TextField onChange={e => setresumeData({ ...resumeData, contactDetails: { ...resumeData.contactDetails, github: e.target.value } })} id="outlined-basic" label="Github Profile" variant="outlined" />
+            <TextField value={resumeData.contactDetails.github || ""} onChange={e => setresumeData({ ...resumeData, contactDetails: { ...resumeData.contactDetails, github: e.target.value } })} id="outlined-basic" label="Github Profile" variant="outlined" />
 
-            <TextField onChange={e => setresumeData({ ...resumeData, contactDetails: { ...resumeData.contactDetails, linkedIn: e.target.value } })} id="outlined-basic" label="LinkedIn Profile" variant="outlined" />
+            <TextField value={resumeData.contactDetails.linkedIn || ""} onChange={e => setresumeData({ ...resumeData, contactDetails: { ...resumeData.contactDetails, linkedIn: e.target.value } })} id="outlined-basic" label="LinkedIn Profile" variant="outlined" />
 
-            <TextField onChange={e => setresumeData({ ...resumeData, contactDetails: { ...resumeData.contactDetails, portfolio: e.target.value } })} id="outlined-basic" label="Portfolio" variant="outlined" />
+            <TextField value={resumeData.contactDetails.portfolio || ""} onChange={e => setresumeData({ ...resumeData, contactDetails: { ...resumeData.contactDetails, portfolio: e.target.value } })} id="outlined-basic" label="Portfolio" variant="outlined" />
           </Box>
 
         </div>
@@ -162,13 +162,13 @@ function Steps({ resumeData, setresumeData,setfinish }) {
             flexDirection={'column'}
             alignItems={'center'}
           >
-            <TextField onChange={e => setresumeData({ ...resumeData, educationDetails: { ...resumeData.educationDetails, course: e.target.value } })} id="outlined-basic" label="Course name" variant="outlined" />
+            <TextField value={resumeData.educationDetails.course || ""} onChange={e => setresumeData({ ...resumeData, educationDetails: { ...resumeData.educationDetails, course: e.target.value } })} id="outlined-basic" label="Course name" variant="outlined" />
 
-            <TextField onChange={e => setresumeData({ ...resumeData, educationDetails: { ...resumeData.educationDetails, college: e.target.value } })} id="outlined-basic" label="College Name" variant="outlined" />
+            <TextField value={resumeData.educationDetails.college || ""} onChange={e => setresumeData({ ...resumeData, educationDetails: { ...resumeData.educationDetails, college: e.target.value } })} id="outlined-basic" label="College Name" variant="outlined" />
 
-            <TextField onChange={e => setresumeData({ ...resumeData, educationDetails: { ...resumeData.educationDetails, university: e.target.value } })} id="outlined-basic" label="University" variant="outlined" />
+            <TextField value={resumeData.educationDetails.university || ""} onChange={e => setresumeData({ ...resumeData, educationDetails: { ...resumeData.educationDetails, university: e.target.value } })} id="outlined-basic" label="University" variant="outlined" />
 
-            <TextField onChange={e => setresumeData({ ...resumeData, educationDetails: { ...resumeData.educationDetails, passout: e.target.value } })} id="outlined-basic" label="Year of Passout" variant="outlined" />
+            <TextField value={resumeData.educationDetails.passout || ""} onChange={e => setresumeData({ ...resumeData, educationDetails: { ...resumeData.educationDetails, passout: e.target.value } })} id="outlined-basic" label="Year of Passout" variant="outlined" />
 
           </Box>
 
@@ -186,13 +186,13 @@ function Steps({ resumeData, setresumeData,setfinish }) {
             flexDirection={'column'}
             alignItems={'center'}
           >
-            <TextField onChange={e => setresumeData({ ...resumeData, workExperience: { ...resumeData.workExperience, jobTitle: e.target.value } })} id="outlined-basic" label="Job or Internship" variant="outlined" />
+            <TextField value={resumeData.workExperience.jobTitle || ""}  onChange={e => setresumeData({ ...resumeData, workExperience: { ...resumeData.workExperience, jobTitle: e.target.value } })} id="outlined-basic" label="Job or Internship" variant="outlined" />
 
-            <TextField onChange={e => setresumeData({ ...resumeData, workExperience: { ...resumeData.workExperience, company: e.target.value } })} id="outlined-basic" label="Company Name" variant="outlined" />
+            <TextField value={resumeData.workExperience.company || ""}  onChange={e => setresumeData({ ...resumeData, workExperience: { ...resumeData.workExperience, company: e.target.value } })} id="outlined-basic" label="Company Name" variant="outlined" />
 
-            <TextField onChange={e => setresumeData({ ...resumeData, workExperience: { ...resumeData.workExperience, location: e.target.value } })} id="outlined-basic" label="Location" variant="outlined" />
+            <TextField value={resumeData.workExperience.location || ""}  onChange={e => setresumeData({ ...resumeData, workExperience: { ...resumeData.workExperience, location: e.target.value } })} id="outlined-basic" label="Location" variant="outlined" />
 
-            <TextField onChange={e => setresumeData({ ...resumeData, workExperience: { ...resumeData.workExperience, duration: e.target.value } })} id="outlined-basic" label="Duration" variant="outlined" />
+            <TextField value={resumeData.workExperience.duration || ""}  onChange={e => setresumeData({ ...resumeData, workExperience: { ...resumeData.workExperience, duration: e.target.value } })} id="outlined-basic" label="Duration" variant="outlined" />
 
           </Box>
 
@@ -210,7 +210,7 @@ function Steps({ resumeData, setresumeData,setfinish }) {
             flexDirection={'column'}
             alignItems={'center'}
           >
-            <TextField onChange={e => setuserSkills(e.target.value)} id="outlined-basic" label="Add Skills" variant="outlined" />
+            <TextField value={userSkills} onChange={e => setuserSkills(e.target.value)} id="outlined-basic" label="Add Skills" variant="outlined" />
 
            <Stack spacing={2} direction="row">
   <Button onClick={() => addSkill(userSkills)} variant="contained">ADD</Button>
