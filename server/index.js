@@ -1,28 +1,23 @@
-// 1. import json server
-
+// 1. Import json-server
 const jsonServer = require('json-server')
 
-// 2. Create an instaance of jsonserver
-
+// 2. Create an instance of json-server
 const server = jsonServer.create()
 
-// 3. create a middleware
-
+// 3. Create middleware
 const middleware = jsonServer.defaults()
 
-// 4. create a router
-
+// 4. Create a router
 const router = jsonServer.router('db.json')
 
-// 5.
-
+// 5. Use middleware and router
 server.use(middleware)
 server.use(router)
 
-// 6.Define PORT
-const PORT = 3000 || process.env.PORT
+// 6. Define PORT (use environment variable if available)
+const PORT = process.env.PORT || 3000
 
-//7.
-server.listen(PORT,()=>{
-    console.log(`JSON Server is running on port ${PORT}`);  
+// 7. Start server
+server.listen(PORT, () => {
+    console.log(`JSON Server is running on port ${PORT}`);
 })
